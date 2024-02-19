@@ -1,14 +1,14 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const Trasactions = await ethers.getContractFactory("Transactions");
-  const transactions = await Trasactions.deploy();
+  const Crowdfunding = await ethers.getContractFactory("Crowdfunding");
+  const crowdfunding = await Crowdfunding.deploy();
 
-  await transactions.waitForDeployment();
-  const receipt = await transactions.deploymentTransaction()?.wait();
+  await crowdfunding.waitForDeployment();
+  const receipt = await crowdfunding.deploymentTransaction()?.wait();
 
   console.log(
-    `Trasactions contract deployed to ` + (await transactions.getAddress())
+    `Crowdfunding contract deployed to ` + (await crowdfunding.getAddress())
   );
 
   console.log(`Gas used for deployment: ${receipt?.gasPrice.toString()}`);
