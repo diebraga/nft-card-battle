@@ -1,40 +1,42 @@
-import { Sidebar, Navbar } from "./components";
+import { Layout } from "./components";
 import { CampaignDetails, CreateCampaign, Home, Profile } from "./pages";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <Layout>
+        <Home />
+      </Layout>
+    ),
   },
   {
     path: "profile",
-    element: <Profile />,
+    element: (
+      <Layout>
+        <Profile />
+      </Layout>
+    ),
   },
   {
     path: "create-campaign",
-    element: <CreateCampaign />,
+    element: (
+      <Layout>
+        <CreateCampaign />
+      </Layout>
+    ),
   },
   {
     path: "campaign-details/:id",
-    element: <CampaignDetails />,
+    element: (
+      <Layout>
+        <CampaignDetails />
+      </Layout>
+    ),
   },
 ]);
 
-const App = () => {
-  return (
-    <div className="relative sm:-8 p-4 bg-[#13131a] min-h-screen flex flex-row">
-      <div className="sm:flex hidden mr-10 relative">
-        <Sidebar />
-      </div>
-
-      <div className="flex-1 max-sm:w-full max-w-[1280px] mx-auto sm:pr-5">
-        <Navbar />
-
-        <RouterProvider router={router} />
-      </div>
-    </div>
-  );
-};
+const App = () => <RouterProvider router={router} />;
 
 export default App;
